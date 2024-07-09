@@ -1,0 +1,253 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+:root{
+  --shadow-drop:0px 5px 0px 0px #eef6f6;
+  --hover:pointer
+}
+.app{
+
+  background-color: hsl(180, 52%, 96%);
+}
+.header{
+  background-color: hsl(180, 29%, 50%);
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.header img{
+  width: 100%;
+  }
+.filter{
+  display: flex;
+  width: 90%;
+  align-items: center;
+  padding: 3%;
+  justify-content: space-between;
+  border-radius: 5px;
+  box-shadow: var(--shadow-drop);
+  background-color: white;
+  position: absolute;
+  bottom: -35%;
+}
+.filter p{
+  color:  #5ba4a4;
+  text-decoration: underline;
+  cursor: var(--hover); 
+}
+.filter .requirements{
+  flex: 0.6 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.filter .requirements .item{
+  display: flex;
+  margin: 10px 0 0 0;
+}
+.filter .requirements .item.delete{
+  display: none;
+}
+.filter .requirements .item h3{
+  color: #5ba4ac;
+  background: #effafa;
+  padding: 8px;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+.filter .requirements .item span{
+  padding: 8px 12px;
+  color: white;
+  background: #5ba4a4;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  cursor: var(--hover);
+}
+.filter .requirements .item span:hover{
+  background-color: black;
+  transition: ease-in-out 0.4s;
+}
+.main{
+  display: flex;
+  background-color: hsl(180, 52%, 96%);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 110px;
+}
+.mini-sec{
+  display: flex;
+  width: 90%;
+  align-items: center;
+  padding: 3%;
+  justify-content:space-between ;
+  border-radius: 5px;
+  box-shadow: var(--shadow-drop);
+  background-color: white;
+  margin: 10px 0;
+  position:relative;
+}
+.mini-sec.featured::before{
+  content: "";
+  width: 5px;
+  height: 100%;
+  background-color: #5ba4a4;
+  left: 0px;
+  top: 0;
+  position: absolute;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.img-details{
+  display: flex;
+  flex: 1;
+}
+.aboutComp{
+  display: flex;
+  align-items: center;
+}
+.aboutComp p{
+  margin: 0 10% 0 0;
+  
+}
+.aboutComp .new{
+  background-color: #5ba4a4;
+  color: white;
+  border-radius: 17px;
+  font-weight: 500;
+  padding: 5px 8px;
+}
+.aboutComp .featured{
+  background-color: black;
+  color: white;
+  border-radius: 17px;
+  font-weight: 500;
+  padding: 5px 8px;
+  
+}
+.aboutJob{
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.aboutJob p{
+  position: relative;
+}
+.aboutJob p:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  background: #8080807a;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  top: 42%;
+  left: 125%;
+}
+.aboutJob p{
+  margin-right: 30px;
+}
+.comp{
+  color:  hsl(180, 29%, 50%);
+}
+.details{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-bottom: 35px;
+}
+
+.lang{
+  display: flex;
+  flex: 0.5;
+  justify-content: end;
+  
+}
+.lang p:hover{
+  background-color: #5ba4ac ;
+  color: hsl(180, 31%, 95%);
+  transition: ease-in-out 0.4s;
+}
+.lang p{
+  cursor: var(--hover);
+  background-color: hsl(180, 31%, 95%);
+  margin-left: 10px;
+  color: #5ba4ac;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 5px;;
+}
+.pose{
+  color: black;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: var(--hover);
+}
+@media screen and (max-width:1024px ) {
+  .mini-sec{
+    flex-direction: column;
+    align-items: self-start;
+    padding-left: 20%;
+  }
+  .img-details {
+    
+  }
+  .img-details::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    bottom: 42%;
+    height: 1px;
+    background-color: gray;
+  }
+  .img-details img{
+    position: absolute;
+    top: 20%;
+    left: 41px;
+  }
+}
+@media screen and (max-width:768px ) {
+  .filter .requirements {
+    flex: 0.9 1;
+  }
+  .filter {
+    height: 100px;
+    bottom: -50px;
+  }
+  .mini-sec {
+    padding: 70px 20px;
+    margin-top: 60px;
+  }
+  .img-details img{
+    position: absolute;
+    top: -46px;
+    left: 41px;
+  }
+  .img-details::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    bottom: 44%;
+    height: 1px;
+    left: 80px;
+    background-color: gray;
+  }
+  .lang{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  
+}
+@media screen and (max-width:568px ) {
+  .img-details::after {
+    bottom: 51%;
+    width: 80%;
+    left: 30px;
+  }
+}

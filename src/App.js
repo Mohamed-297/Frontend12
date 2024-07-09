@@ -1,23 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import data from "./data.json"
+import MiniSections from "./components/MiniSections";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          I have just made changes to this project
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+const[show,setShow]=useState(data.map(()=>true))
+const [item,setItem]=useState([])
+
+
+function handleClick(event){
+  if(item.includes(event.target.innerText)){
+    
+  }else{
+    
+    setItem(prevItem=>
+      [...prevItem,event.target.innerText]
+    )
+    console.log(item)
+    
+    setShow(data.map(d => d.role === event.target.innerText||d.level ===event.target.innerText||
+      d.languages.every(la=>la===event.target.innerText)||d.tools.every(tool=>tool===event.target.innerText)))
+    }
+
+}
+const restData=data.map((d,index)=>{
+  return show[index]&&<MiniSections 
+      key={d.id}
+      {...d}
+      click={handleClick}
+              
+  />
+})
+
+const arrElements=item.map((el,index)=>{
+  return  <div className="item"><h3>{el}</h3> <span onClick={()=>handleRemove(index)}>X</span></div>
+})
+function handleClear(){
+  if(item.length>0){
+    setItem([])
+    setShow(data.map(()=>true))
+  }
+  
+}
+
+
+function handleRemove(index){
+  setItem(prevItem=>prevItem.filter((_,i)=>i!==index))
+}
+
+return (
+    <div className="app">
+      <Header
+        key={restData.map((d)=>d.id)}
+        dataOfItems={arrElements}
+        clear={handleClear}  
+      />
+    <div className="main">
+      {restData}
+    </div>      
+      <Main
+    />
     </div>
   );
 }
